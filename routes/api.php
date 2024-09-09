@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\AthleteController;
 use App\Http\Controllers\API\CoachController;
+use App\Http\Controllers\API\FieldController;
 use App\Http\Controllers\API\Auth\PasswordResetController;
 
 
@@ -23,6 +24,12 @@ Route::group(["middleware" => ['auth:sanctum']], function () {
     Route::get('/coach/{coach_id}', [CoachController::class, 'show']);
     Route::post('/coach', [CoachController::class, 'store']);
     Route::put('/coach/{coach_id}', [CoachController::class, 'update']);
+
+    // Rotas para o Field
+    Route::get('/fields', [FieldController::class, 'index']);
+    Route::get('/field/{field_id}', [FieldController::class, 'show']);
+    Route::post('/field', [FieldController::class, 'store']);
+    Route::put('/field/{field_id}', [FieldController::class, 'update']);
 });
 
 

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Field extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'timetable',
+    ];
+
+    protected $casts = [
+        'timetable' => 'array',
+    ];
 }
