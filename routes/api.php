@@ -4,19 +4,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\AthleteController;
+use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\Auth\PasswordResetController;
 
 
 
-Route::group(["middleware" => ['auth:sanctum']],function(){
+Route::group(["middleware" => ['auth:sanctum']], function () {
     Route::get("/logout", [AuthController::class, 'logout']);
 
-    // Rotas para o AthleteController
-        Route::get('/athletes', [AthleteController::class, 'index']); // Listar todos os atletas
-        Route::get('/athlete/{athlete_id}', [AthleteController::class, 'show']); // Mostrar um atleta específico
-        Route::post('/athlete', [AthleteController::class, 'store']); // Criar um novo atleta
-        Route::put('/athlete/{athlete_id}', [AthleteController::class, 'update']); // Editar um atleta existente
+    // Rotas para o Athlete
+    Route::get('/athletes', [AthleteController::class, 'index']);
+    Route::get('/athlete/{athlete_id}', [AthleteController::class, 'show']);
+    Route::post('/athlete', [AthleteController::class, 'store']);
+    Route::put('/athlete/{athlete_id}', [AthleteController::class, 'update']);
 
+    // Rotas para o Coach
+    Route::get('/coachs', [CoachController::class, 'index']);
+    Route::get('/coach/{coach_id}', [CoachController::class, 'show']);
+    Route::post('/coach', [CoachController::class, 'store']);
+    Route::put('/coach/{coach_id}', [CoachController::class, 'update']);
 });
 
 
