@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('athletes', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
+            $table->foreignId('group_id')->constrained('groups');
             $table->string('responsible_name');
             $table->string('responsible_CPF');
             $table->string('responsible_email');

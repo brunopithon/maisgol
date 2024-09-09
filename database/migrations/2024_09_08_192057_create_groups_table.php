@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->enum('status', ['active', 'inactive', ])->default('active');
+            $table->timestamps();
         });
     }
 

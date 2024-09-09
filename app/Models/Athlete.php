@@ -11,6 +11,7 @@ class Athlete extends Model
 
     protected $fillable = [
         'name',
+        'group_id',
         'responsible_name',
         'responsible_CPF',
         'responsible_email',

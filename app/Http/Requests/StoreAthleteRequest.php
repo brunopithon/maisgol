@@ -23,6 +23,7 @@ class StoreAthleteRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'group_id' => 'required|numeric|exists:groups,id',
             'responsible_name' => 'required|string|max:255',
             'responsible_CPF' => 'required|string|max:14|unique:athletes,responsible_CPF',
             'responsible_email' => 'required|email|unique:athletes,responsible_email',

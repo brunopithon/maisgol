@@ -3,12 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\Auth\PasswordResetController;
 use App\Http\Controllers\API\AthleteController;
 use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\FieldController;
-use App\Http\Controllers\API\Auth\PasswordResetController;
-
-
+use App\Http\Controllers\API\GroupController;
 
 Route::group(["middleware" => ['auth:sanctum']], function () {
     Route::get("/logout", [AuthController::class, 'logout']);
@@ -30,6 +29,14 @@ Route::group(["middleware" => ['auth:sanctum']], function () {
     Route::get('/field/{field_id}', [FieldController::class, 'show']);
     Route::post('/field', [FieldController::class, 'store']);
     Route::put('/field/{field_id}', [FieldController::class, 'update']);
+
+    // Rotas para o Group
+    Route::get('/groups', [GroupController::class, 'index']);
+    Route::get('/group/{group_id}', [GroupController::class, 'show']);
+    Route::post('/group', [GroupController::class, 'store']);
+    Route::put('/group/{group_id}', [GroupController::class, 'update']);
+    Route::delete('/group/{group_id}', [GroupController::class, 'destroy']);
+
 });
 
 
