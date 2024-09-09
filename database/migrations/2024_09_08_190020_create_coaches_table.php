@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->date('birth_date');
             $table->string('email')->unique();
-            $table->json('timetable'); // Horário de trabalho armazenado em JSON
+            $table->json('timetable');
             $table->timestamps();
         });
     }
