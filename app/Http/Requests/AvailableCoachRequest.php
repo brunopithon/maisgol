@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCoachRequest extends FormRequest
+class AvailableCoachRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true; // Permite a autorização
+        return true;
     }
 
     /**
@@ -22,12 +22,8 @@ class StoreCoachRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'cpf' => 'required|string|size:11|unique:coaches',
-            'status' => 'required|in:active,inactive',
-            'birth_date' => 'required|date',
-            'email' => 'required|email|unique:coaches',
-            // 'timetable' => 'nullable|array',
+            'start_time' => 'required|date_format:H:i:s',
+            'day' => 'required|string|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
         ];
     }
 }

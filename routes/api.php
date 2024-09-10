@@ -20,12 +20,14 @@ Route::post('/athlete', [AthleteController::class, 'store']);
 Route::put('/athlete/{athlete_id}', [AthleteController::class, 'update']);
 
 // Rotas para o Coach
+Route::post('/available_coaches', [CoachController::class, 'availableCoaches']);
 Route::get('/coachs', [CoachController::class, 'index']);
 Route::get('/coach/{coach_id}', [CoachController::class, 'show']);
 Route::post('/coach', [CoachController::class, 'store']);
 Route::put('/coach/{coach_id}', [CoachController::class, 'update']);
 
 // Rotas para o Field
+Route::post('/available_fields', [FieldController::class, 'availableFields']);
 Route::get('/fields', [FieldController::class, 'index']);
 Route::get('/field/{field_id}', [FieldController::class, 'show']);
 Route::post('/field', [FieldController::class, 'store']);
