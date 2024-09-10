@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->date('birth_date');
             $table->string('email')->unique();
-            $table->json('timetable');
+            $table->json('timetable')->nullable();
             $table->timestamps();
         });
     }

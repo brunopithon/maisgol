@@ -23,7 +23,7 @@ class StoreFieldRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'timetable' => 'required|array',
+            'timetable' => 'nullable|json',
         ];
     }
 }

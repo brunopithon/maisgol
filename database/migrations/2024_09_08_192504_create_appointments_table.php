@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('coach_id')->constrained('coaches');
             $table->foreignId('field_id')->constrained('fields');
             $table->foreignId('group_id')->constrained('groups');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->string('day');
+            $table->time('start_time');
             $table->timestamps();
         });
     }
