@@ -25,7 +25,6 @@ class AppointmentControllerTest extends TestCase
 
         $group = Group::factory()->create();
 
-        // Dados de exemplo para criar um agendamento
         $appointmentData = [
             'field_id' => $field->id,
             'coach_id' => $coach->id,

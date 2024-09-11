@@ -19,12 +19,12 @@ class AthleteControllerTest extends TestCase
      */
     public function test_can_create_athlete()
     {
-        // Cria um grupo para o atleta
+
         $group = Group::factory()->create();
 
         $data = [
             'name' => 'Dr. Antonieta Vila Zambrano',
-            'group_id' => $group->id, // Usa o ID do grupo criado
+            'group_id' => $group->id,
             'responsible_name' => 'Sra. Katherine Ketlin Guerra',
             'responsible_CPF' => '46747158786',
             'responsible_email' => 'zrodrigues@example.net',
@@ -43,13 +43,11 @@ class AthleteControllerTest extends TestCase
             'state' => 'AL',
         ];
 
-        // Requisição POST para criar o atleta
+
         $response = $this->postJson('/api/athlete', $data);
 
-        // Verifica se o status HTTP 201 (Criado) foi retornado
         $response->assertStatus(201);
 
-        // Verifica se o atleta foi criado no banco de dados
         $this->assertDatabaseHas('athletes', [
             'name' => $data['name'],
             'group_id' => $data['group_id'],
@@ -64,22 +62,17 @@ class AthleteControllerTest extends TestCase
      */
     public function can_list_athletes()
     {
-        // Crie um grupo para o atleta
         $group = Group::factory()->create();
 
-        // Crie um atleta
         $athlete = Athlete::factory()->create([
             'name' => 'Dr. Antonieta Vila Zambrano',
             'group_id' => $group->id,
         ]);
 
-        // Faça a requisição para listar os atletas
         $response = $this->getJson('/api/athletes');
 
-        // Verifique se o status HTTP 200 (OK) foi retornado
         $response->assertStatus(200);
 
-        // Verifique se o atleta está presente na resposta
         $response->assertJsonFragment([
             'name' => 'Dr. Antonieta Vila Zambrano',
         ]);
@@ -92,17 +85,13 @@ class AthleteControllerTest extends TestCase
      */
     public function test_can_show_single_athlete()
     {
-        // Cria um grupo e um atleta para testar a visualização
         $group = Group::factory()->create();
         $athlete = Athlete::factory()->create(['group_id' => $group->id]);
 
-        // Requisição GET para visualizar o atleta
         $response = $this->getJson('/api/athlete/' . $athlete->id);
 
-        // Verifica se o status HTTP 200 (OK) foi retornado
         $response->assertStatus(200);
 
-        // Verifica se o atleta está presente na resposta
         $response->assertJsonFragment([
             'name' => $athlete->name,
         ]);
@@ -115,7 +104,6 @@ class AthleteControllerTest extends TestCase
      */
     public function test_can_update_athlete()
     {
-        // Cria um grupo e um atleta para testar a atualização
         $group = Group::factory()->create();
         $athlete = Athlete::factory()->create(['group_id' => $group->id]);
 
@@ -140,13 +128,10 @@ class AthleteControllerTest extends TestCase
             'state' => 'AP',
         ];
 
-        // Requisição PUT para atualizar o atleta
         $response = $this->putJson('/api/athlete/' . $athlete->id, $data);
 
-        // Verifica se o status HTTP 200 (OK) foi retornado
         $response->assertStatus(200);
 
-        // Verifica se o atleta foi atualizado no banco de dados
         $this->assertDatabaseHas('athletes', [
             'id' => $athlete->id,
             'name' => $data['name'],
