@@ -27,7 +27,6 @@ class StoreCoachRequest extends FormRequest
             'status' => 'required|in:active,inactive',
             'birth_date' => 'required|date',
             'email' => 'required|email|unique:coaches',
-            // 'timetable' => 'nullable|array',
         ];
     }
 }

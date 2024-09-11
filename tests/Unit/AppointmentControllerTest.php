@@ -23,7 +23,7 @@ class AppointmentControllerTest extends TestCase
         $coach = Coach::factory()->create([
         ]);
 
-        $group = Group::factory()->create(); // Criar o grupo
+        $group = Group::factory()->create();
 
         // Dados de exemplo para criar um agendamento
         $appointmentData = [
@@ -34,11 +34,8 @@ class AppointmentControllerTest extends TestCase
             'start_time' => '10:00:00',
         ];
 
-        // Fazer a requisição POST para criar o agendamento
         $response = $this->postJson('/api/appointment', $appointmentData);
-        $response->dump();
 
-        // Verificar se o agendamento foi criado com sucesso
         $response->assertStatus(201);
         $response->assertJson([
             'message' => 'Agendamento criado com sucesso.',
